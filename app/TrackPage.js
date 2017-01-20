@@ -10,15 +10,15 @@ export default class TrackPage{
             clientId = randomatic('A0', 30);
             Cookies.set('clientId', clientId, { expires: 7 });
         }
-        return { clientId: clientId, api: "12345678" };
+        return { clientId: clientId, apiKey: "12345678" };
     }
 
     get product(){
-         return tracker;
+         return { prodid: tracker.prodid, price: tracker.price };
     }
 
     get customer(){
-         return tracker;
+         return { customerId: tracker.customerId };
     }    
 
 }

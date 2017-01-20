@@ -5,6 +5,6 @@ import headers from './Headers';
 
 document.addEventListener("DOMContentLoaded", function(event) { 
   let trackPage = new TrackPage();
-  const data = { client: trackPage.client, headers: headers(), customer: {}, product: trackPage.product, cart: [], order: {} };
+  const data = { client: trackPage.client, headers: headers(), customer: trackPage.customer, product: trackPage.product, cart: [], order: {} };
   push.send(data);
 });
