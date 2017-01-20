@@ -1,23 +1,10 @@
-import _ from 'lodash';
 import TrackPage from './TrackPage';
 import push from './PushData';
-import Header from './Headers';
+import headers from './Headers';
 
-function component () {
-  var element = document.createElement('div');
+
+document.addEventListener("DOMContentLoaded", function(event) { 
   let trackPage = new TrackPage();
-  let header = new Header();
-
-  console.log("Header", header.all);
-
-  let name = trackPage.pageName;
-  console.log(trackPage.client);
-  element.innerHTML = _.join(['Hello', name], ' ');
-  
-  push.send(trackPage.client);
-
-  return element;
-}
-
-
-document.body.appendChild(component());
+  const data = { client: trackPage.client, headers: headers(), customer: {}, product: trackPage.product, cart: [], order: {} };
+  push.send(data);
+});
