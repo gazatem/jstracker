@@ -10,15 +10,17 @@ export default class TrackPage{
             clientId = randomatic('A0', 30);
             Cookies.set('clientId', clientId, { expires: 7 });
         }
-        return { clientId: clientId, apiKey: "12345678" };
+        return { client_id: clientId, api_key: tracker.api_key };
     }
 
     get product(){
-         return { prodid: tracker.prodid, price: tracker.price };
+         if(!tracker.product) return {};
+         return { id: tracker.product.id, price: tracker.product.price, model: tracker.product.model, name: tracker.product.name };
     }
 
     get customer(){
-         return { customerId: tracker.customerId };
+         if(!tracker.customer) return {};
+         return { id: tracker.customer.id, name: tracker.customer.name, email: tracker.customer.email, phone: tracker.customer.phone };
     }    
 
 }
